@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Dynamic Portfolio Dashboard - Setup Guide
 
-## Getting Started
+This guide explains how to set up, run, and build the **Dynamic Portfolio Dashboard** on your local machine.
 
-First, run the development server:
+## Prerequisites
+- **Node.js**: Version 18.17.0 or higher.
+- **npm**: Installed with Node.js.
+
+---
+
+## 1. Installation
+
+1.  **Unzip / Open the Project Folder**:
+    Navigate to the project directory in your terminal.
+    ```bash
+    cd portfolio-dashboard
+    ```
+
+2.  **Install Dependencies**:
+    Run the following command to install all required packages (Next.js, React, Tailwind, Yahoo Finance, etc.):
+    ```bash
+    npm install
+    ```
+
+---
+
+## 2. Running the Development Server
+
+To start the dashboard locally with hot-reloading enabled:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- The server will start at: `http://localhost:3000`
+- Open this URL in your browser.
+- The dashboard will automatically fetch fresh data every 15 seconds.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 3. Data Management
 
-## Learn More
+- **Portfolio Data**: The raw Excel file is located at `data/E555815F_58D029050B.xlsx`.
+- **JSON Generation**: The app uses `data/portfolio.json`. If you update the Excel file, regenerate the JSON by running:
+    ```bash
+    node scripts/generate-portfolio.js
+    ```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 4. Building for Production
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+If you want to create an optimized production build (simulating a deployed environment):
 
-## Deploy on Vercel
+1.  **Build**:
+    ```bash
+    npm run build
+    ```
+2.  **Start**:
+    ```bash
+    npm start
+    ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+
+## Folder Structure Overview
+
+- **`app/`**: Main application code (Pages, API Routes).
+- **`components/`**: UI Components (PortfolioTable).
+- **`lib/`**: Backend logic (`stock-service.ts`) and Yahoo Client (`yahoo-client.ts`).
+- **`data/`**: Excel source file and generated JSON.
+- **`scripts/`**: Utility scripts for data parsing.
+# Dynamic-Portfolio-Dashboard
